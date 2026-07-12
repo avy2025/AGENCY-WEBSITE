@@ -1,0 +1,109 @@
+.features {
+  background: var(--color-surface-container-low);
+}
+
+.header {
+  max-width: 720px;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heading {
+  color: var(--color-on-background);
+}
+
+.subtext {
+  color: var(--color-on-surface-variant);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-gutter);
+}
+
+.card {
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-card);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-ambient);
+  border: 1px solid var(--color-outline-variant);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-inverse-primary));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(34, 95, 120, 0.12);
+  background: white;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.iconWrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--color-secondary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+
+.card:hover .iconWrapper {
+  background: var(--color-primary);
+}
+
+.icon {
+  font-size: 20px;
+  color: var(--color-primary);
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.card:hover .icon {
+  color: white;
+}
+
+.cardTitle {
+  color: var(--color-on-surface);
+}
+
+.cardDesc {
+  color: var(--color-on-surface-variant);
+  line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

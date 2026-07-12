@@ -1,0 +1,315 @@
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+/* Ambient blobs */
+.blob1 {
+  position: absolute;
+  top: -200px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(150, 206, 235, 0.25) 0%, rgba(199, 231, 249, 0.08) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: blobFloat 12s ease-in-out infinite;
+}
+
+.blob2 {
+  position: absolute;
+  bottom: -150px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(63, 120, 146, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: blobFloat 16s ease-in-out infinite reverse;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -20px) scale(1.03); }
+  66% { transform: translate(-10px, 15px) scale(0.97); }
+}
+
+/* Inner layout */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  flex: 1;
+  padding-block: 160px 80px;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.eyebrow {
+  color: var(--color-primary-container);
+  letter-spacing: 0.12em;
+  animation: fadeUp 0.8s ease both;
+}
+
+.headline {
+  color: var(--color-on-background);
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.headlineItalic {
+  font-style: italic;
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.subtext {
+  color: var(--color-on-surface-variant);
+  max-width: 480px;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: fadeUp 0.8s ease 0.4s both;
+  margin-top: 12px;
+}
+
+.trustBadge {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trustValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.trustLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.trustDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--color-outline-variant);
+}
+
+/* Visual */
+.visual {
+  position: relative;
+  animation: fadeIn 1s ease 0.15s both;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12px;
+  height: 520px;
+}
+
+.imageColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.imageCard {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-ambient);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.imageCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 48px rgba(34, 95, 120, 0.15);
+}
+
+.imageCardLarge {
+  height: 100%;
+}
+
+.imageCardSmall {
+  flex: 1;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  position: relative;
+  min-height: 140px;
+  background-size: cover;
+  background-position: center;
+}
+
+.imagePlaceholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 60%);
+}
+
+.imageLabel {
+  position: relative;
+  z-index: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.04em;
+}
+
+/* Floating glass card */
+.glassCard {
+  position: absolute;
+  bottom: -20px;
+  left: -30px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(247, 250, 254, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 16px 22px;
+  box-shadow: 0 8px 32px rgba(34, 95, 120, 0.1);
+  animation: glassFloat 6s ease-in-out infinite;
+}
+
+.glassCardIcon {
+  font-size: 22px;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.glassCardTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  line-height: 1.2;
+}
+
+.glassCardSub {
+  font-size: 12px;
+  color: var(--color-on-surface-variant);
+  line-height: 1.2;
+}
+
+@keyframes glassFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.5;
+  animation: fadeIn 1.5s ease 1s both;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--color-primary), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scrollText {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.5; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+/* Keyframes */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-block: 140px 60px;
+  }
+  .visual {
+    max-width: 560px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .imageGrid {
+    height: 400px;
+  }
+  .blob1 {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    padding-block: 120px 60px;
+  }
+  .headline {
+    font-size: 44px;
+  }
+  .imageGrid {
+    height: 320px;
+  }
+  .glassCard {
+    left: 0;
+    bottom: -16px;
+  }
+  .actions {
+    flex-direction: column;
+  }
+}
