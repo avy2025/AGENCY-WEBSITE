@@ -1,0 +1,69 @@
+:root {
+  /* Colors */
+  --color-surface: #f7fafe;
+  --color-surface-dim: #d7dade;
+  --color-surface-bright: #f7fafe;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f4f8;
+  --color-surface-container: #ebeef2;
+  --color-surface-container-high: #e5e8ec;
+  --color-surface-container-highest: #e0e3e7;
+  --color-on-surface: #181c1f;
+  --color-on-surface-variant: #40484c;
+  --color-inverse-surface: #2d3134;
+  --color-inverse-on-surface: #eef1f5;
+  --color-outline: #71787d;
+  --color-outline-variant: #c0c7cd;
+  --color-surface-tint: #29657e;
+  --color-primary: #225f78;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #3f7892;
+  --color-on-primary-container: #eff8ff;
+  --color-inverse-primary: #96ceeb;
+  --color-secondary: #446271;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #c7e7f9;
+  --color-on-secondary-container: #4a6977;
+  --color-background: #f7fafe;
+  --color-on-background: #181c1f;
+
+  /* Typography */
+  --font-family-primary: 'Manrope', sans-serif;
+  --font-size-display: 80px;
+  --font-weight-display: 800;
+  --line-height-display: 1.1;
+  
+  --font-size-headline-lg: 48px;
+  --font-weight-headline-lg: 700;
+  --font-size-headline-lg-mobile: 32px;
+  
+  --font-size-headline-md: 32px;
+  --font-weight-headline-md: 600;
+
+  --font-size-body-lg: 18px;
+  --font-size-body-md: 16px;
+
+  /* Spacing */
+  --spacing-container-max: 1440px;
+  --spacing-margin-desktop: 80px;
+  --spacing-margin-tablet: 40px;
+  --spacing-margin-mobile: 20px;
+  --spacing-gutter: 24px;
+  --spacing-section-gap: 120px;
+  --spacing-element-gap: 24px;
+
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Showroom Card Radius */
+  --radius-card: 20px; 
+
+  /* Ambient Shadows */
+  --shadow-ambient: 0 4px 20px -2px rgba(63, 120, 146, 0.08), 0 12px 30px -4px rgba(63, 120, 146, 0.05);
+  --shadow-glass: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 8px 32px rgba(63, 120, 146, 0.08);
+}
