@@ -1,0 +1,126 @@
+.footer {
+  background: var(--color-inverse-surface);
+  color: var(--color-inverse-on-surface);
+  padding-top: 80px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Brand column */
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoMark {
+  color: var(--color-inverse-primary);
+  font-size: 18px;
+}
+
+.logoText {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-inverse-on-surface);
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(238, 241, 245, 0.6);
+  max-width: 280px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactLink {
+  font-size: 14px;
+  color: rgba(238, 241, 245, 0.7);
+  transition: color 0.25s ease;
+  text-decoration: none;
+}
+
+.contactLink:hover {
+  color: var(--color-inverse-primary);
+}
+
+/* Links columns */
+.linksCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.colHeading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-inverse-primary);
+  margin-bottom: 4px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerLink {
+  font-size: 14px;
+  color: rgba(238, 241, 245, 0.65);
+  transition: color 0.25s ease;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: var(--color-inverse-on-surface);
+}
+
+/* Bottom bar */
+.bottomBar {
+  padding: 20px 0;
+}
+
+.copyright {
+  font-size: 13px;
+  color: rgba(238, 241, 245, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+}
