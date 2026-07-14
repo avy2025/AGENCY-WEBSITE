@@ -1,6 +1,7 @@
 import { type FormEvent, useState } from 'react';
 import Layout from '../../components/Layout/Layout';
 import Button from '../../components/Button/Button';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Showroom.module.css';
 
 interface FormState {
@@ -19,45 +20,46 @@ const initialForm: FormState = {
   message: '',
 };
 
-const interests = [
-  'Kitchen Sinks',
-  'Wall Tiles',
-  'Bathroom Tiles',
-  'Designer Taps',
-  'Wash Basins',
-  'Complete Bathroom Renovation',
-  'General Enquiry',
-];
-
-const infoItems = [
-  {
-    icon: '📍',
-    title: 'Visit Our Showroom',
-    lines: ['Maa Bhawani Agencies', 'Ranchi, Jharkhand, India'],
-  },
-  {
-    icon: '📞',
-    title: 'Call Us',
-    lines: ['+91 6299468583'],
-    href: 'tel:6299468583',
-  },
-  {
-    icon: '✉',
-    title: 'Email Us',
-    lines: ['pankajraj140397@gmail.com'],
-    href: 'mailto:pankajraj140397@gmail.com',
-  },
-  {
-    icon: '🕐',
-    title: 'Opening Hours',
-    lines: ['Mon – Sat: 9:00 AM – 7:00 PM', 'Sunday: By Appointment'],
-  },
-];
-
 export default function Showroom() {
+  const { t } = useLanguage();
   const [form, setForm] = useState<FormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const interestKeys = [
+    'sinks',
+    'wall',
+    'bathTiles',
+    'taps',
+    'basins',
+    'renovation',
+    'general',
+  ];
+
+  const infoItems = [
+    {
+      icon: '📍',
+      title: t('showroom.locations.showroom'),
+      lines: [t('showroom.locations.addressLine1'), t('showroom.locations.addressLine2')],
+    },
+    {
+      icon: '📞',
+      title: t('showroom.locations.call'),
+      lines: ['+91 6299468583'],
+      href: 'tel:6299468583',
+    },
+    {
+      icon: '✉',
+      title: t('showroom.locations.email'),
+      lines: ['pankajraj140397@gmail.com'],
+      href: 'mailto:pankajraj140397@gmail.com',
+    },
+    {
+      icon: '🕐',
+      title: t('showroom.locations.hours'),
+      lines: [t('showroom.locations.days'), t('showroom.locations.sunday')],
+    },
+  ];
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -81,11 +83,10 @@ export default function Showroom() {
       <section className={styles.pageHeader}>
         <div className="container">
           <div className={styles.pageHeaderContent}>
-            <span className="section-label">Get In Touch</span>
-            <h1 className={`text-display ${styles.pageTitle}`}>Visit Our Showroom</h1>
+            <span className="section-label">{t('showroom.eyebrow')}</span>
+            <h1 className={`text-display ${styles.pageTitle}`}>{t('showroom.title')}</h1>
             <p className={`text-body-lg ${styles.pageSubtitle}`}>
-              Visit our showroom to experience the tactile quality of premium architectural
-              fixtures, or reach out to our team for dedicated consultation.
+              {t('showroom.subtitle')}
             </p>
           </div>
         </div>
@@ -100,11 +101,10 @@ export default function Showroom() {
             <aside className={styles.infoColumn}>
               <div className={`reveal ${styles.infoHeader}`}>
                 <h2 className={`text-headline-sm ${styles.infoTitle}`}>
-                  Experience Architectural Luxury
+                  {t('showroom.expTitle')}
                 </h2>
                 <p className={`text-body-md ${styles.infoDesc}`}>
-                  Curating architectural luxury through premium sinks, tiles, and
-                  fittings for refined spaces. Schedule a visit or reach out directly.
+                  {t('showroom.expDesc')}
                 </p>
               </div>
 
@@ -135,14 +135,14 @@ export default function Showroom() {
               <div className={`reveal ${styles.mapCard}`}>
                 <div className={styles.mapPlaceholder}>
                   <div className={styles.mapPin} aria-hidden="true">📍</div>
-                  <p className={styles.mapLabel}>Ranchi, Jharkhand</p>
+                  <p className={styles.mapLabel}>{t('showroom.mapTitle')}</p>
                   <a
                     href="https://maps.google.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.mapLink}
                   >
-                    Get Directions →
+                    {t('showroom.directions')} →
                   </a>
                 </div>
               </div>
@@ -152,25 +152,25 @@ export default function Showroom() {
             <div className={`reveal ${styles.formColumn}`}>
               <div className={styles.formCard}>
                 <h2 className={`text-headline-sm ${styles.formTitle}`}>
-                  Book a Consultation
+                  {t('showroom.form.title')}
                 </h2>
                 <p className={`text-body-md ${styles.formSubtitle}`}>
-                  Fill in your details and we'll get back to you within 24 hours.
+                  {t('showroom.form.subtitle')}
                 </p>
 
                 {submitted ? (
                   <div className={styles.successState}>
                     <div className={styles.successIcon} aria-hidden="true">✓</div>
-                    <h3 className={styles.successTitle}>Message Received!</h3>
+                    <h3 className={styles.successTitle}>{t('showroom.form.successTitle')}</h3>
                     <p className={styles.successText}>
-                      Thank you for reaching out. Our team will contact you within 24 hours.
+                      {t('showroom.form.successText')}
                     </p>
                     <Button
                       variant="primary"
                       size="md"
                       onClick={() => setSubmitted(false)}
                     >
-                      Send Another Message
+                      {t('showroom.form.sendAnother')}
                     </Button>
                   </div>
                 ) : (
@@ -178,14 +178,14 @@ export default function Showroom() {
                     <div className={styles.formRow}>
                       <div className={styles.fieldGroup}>
                         <label htmlFor="name" className={styles.fieldLabel}>
-                          Full Name <span aria-hidden="true">*</span>
+                          {t('showroom.form.fullName')} <span aria-hidden="true">*</span>
                         </label>
                         <input
                           id="name"
                           name="name"
                           type="text"
                           className={styles.field}
-                          placeholder="Your full name"
+                          placeholder={t('showroom.form.fullNamePlaceholder')}
                           value={form.name}
                           onChange={handleChange}
                           required
@@ -194,14 +194,14 @@ export default function Showroom() {
                       </div>
                       <div className={styles.fieldGroup}>
                         <label htmlFor="phone" className={styles.fieldLabel}>
-                          Phone Number
+                          {t('showroom.form.phone')}
                         </label>
                         <input
                           id="phone"
                           name="phone"
                           type="tel"
                           className={styles.field}
-                          placeholder="+91 XXXXX XXXXX"
+                          placeholder={t('showroom.form.phonePlaceholder')}
                           value={form.phone}
                           onChange={handleChange}
                           autoComplete="tel"
@@ -211,14 +211,14 @@ export default function Showroom() {
 
                     <div className={styles.fieldGroup}>
                       <label htmlFor="email" className={styles.fieldLabel}>
-                        Email Address <span aria-hidden="true">*</span>
+                        {t('showroom.form.email')} <span aria-hidden="true">*</span>
                       </label>
                       <input
                         id="email"
                         name="email"
                         type="email"
                         className={styles.field}
-                        placeholder="your@email.com"
+                        placeholder={t('showroom.form.emailPlaceholder')}
                         value={form.email}
                         onChange={handleChange}
                         required
@@ -228,7 +228,7 @@ export default function Showroom() {
 
                     <div className={styles.fieldGroup}>
                       <label htmlFor="interest" className={styles.fieldLabel}>
-                        I'm Interested In
+                        {t('showroom.form.interest')}
                       </label>
                       <select
                         id="interest"
@@ -237,22 +237,22 @@ export default function Showroom() {
                         value={form.interest}
                         onChange={handleChange}
                       >
-                        <option value="">Select a category</option>
-                        {interests.map((opt) => (
-                          <option key={opt} value={opt}>{opt}</option>
+                        <option value="">{t('showroom.form.selectCategory')}</option>
+                        {interestKeys.map((opt) => (
+                          <option key={opt} value={opt}>{t(`showroom.form.interests.${opt}`)}</option>
                         ))}
                       </select>
                     </div>
 
                     <div className={styles.fieldGroup}>
                       <label htmlFor="message" className={styles.fieldLabel}>
-                        Your Message
+                        {t('showroom.form.message')}
                       </label>
                       <textarea
                         id="message"
                         name="message"
                         className={`${styles.field} ${styles.textarea}`}
-                        placeholder="Tell us about your project requirements..."
+                        placeholder={t('showroom.form.messagePlaceholder')}
                         value={form.message}
                         onChange={handleChange}
                         rows={5}
@@ -267,7 +267,7 @@ export default function Showroom() {
                       className={styles.submitBtn}
                       disabled={loading}
                     >
-                      {loading ? 'Sending…' : 'Send Enquiry'}
+                      {loading ? t('showroom.form.sending') : t('showroom.form.sendEnquiry')}
                     </Button>
                   </form>
                 )}
