@@ -1,9 +1,12 @@
 import Button from '../../../components/Button/Button';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+
   return (
-    <section className={styles.hero} aria-label="Hero">
+    <section className={styles.hero} aria-label={t('hero.eyebrow')}>
       {/* Background gradient blob */}
       <div className={styles.blob1} aria-hidden="true" />
       <div className={styles.blob2} aria-hidden="true" />
@@ -12,40 +15,39 @@ export default function HeroSection() {
         {/* Left Content */}
         <div className={styles.content}>
           <span className={`text-label-caps ${styles.eyebrow}`}>
-            ✦ Premium Luxury Showroom
+            {t('hero.eyebrow')}
           </span>
 
           <h1 className={`text-display ${styles.headline}`}>
-            Architectural
+            {t('hero.headline')}
             <br />
-            <em className={styles.headlineItalic}>Luxury</em>
+            <em className={styles.headlineItalic}>{t('hero.headlineItalic')}</em>
             <br />
-            Defined
+            {t('hero.headlineEnd')}
           </h1>
 
           <p className={`text-body-lg ${styles.subtext}`}>
-            Premium Tiles, Sanitary Ware &amp; Bathroom Solutions Under One Roof.
-            Experience tactile quality and pristine elegance for your next architectural project.
+            {t('hero.subtext')}
           </p>
 
           <div className={styles.actions}>
             <Button as="link" to="/collections" variant="primary" size="lg" icon="→">
-              Explore Products
+              {t('hero.btnExplore')}
             </Button>
             <Button as="link" to="/showroom" variant="secondary" size="lg">
-              Visit Store
+              {t('hero.btnVisit')}
             </Button>
           </div>
 
           <div className={styles.trust}>
             <div className={styles.trustBadge}>
               <span className={styles.trustValue}>25+</span>
-              <span className={styles.trustLabel}>Years of Trust</span>
+              <span className={styles.trustLabel}>{t('hero.yearsTrust')}</span>
             </div>
             <div className={styles.trustDivider} aria-hidden="true" />
             <div className={styles.trustBadge}>
               <span className={styles.trustValue}>100%</span>
-              <span className={styles.trustLabel}>Genuine Products</span>
+              <span className={styles.trustLabel}>{t('hero.genuineProd')}</span>
             </div>
           </div>
         </div>
@@ -55,18 +57,18 @@ export default function HeroSection() {
           <div className={styles.imageGrid}>
             <div className={`${styles.imageCard} ${styles.imageCardLarge}`}>
               <div className={styles.imagePlaceholder} style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1552321554-5fecd8c7856a?auto=format&fit=crop&w=800&q=80")' }}>
-                <span className={styles.imageLabel}>Luxury Bathrooms</span>
+                <span className={styles.imageLabel}>{t('collections.cat.bathTiles')}</span>
               </div>
             </div>
             <div className={styles.imageColumn}>
               <div className={`${styles.imageCard} ${styles.imageCardSmall}`}>
                 <div className={styles.imagePlaceholder} style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80")' }}>
-                  <span className={styles.imageLabel}>Designer Taps</span>
+                  <span className={styles.imageLabel}>{t('categories.taps.title')}</span>
                 </div>
               </div>
               <div className={`${styles.imageCard} ${styles.imageCardSmall}`}>
                 <div className={styles.imagePlaceholder} style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80")' }}>
-                  <span className={styles.imageLabel}>Premium Tiles</span>
+                  <span className={styles.imageLabel}>{t('categories.wallTiles.title')}</span>
                 </div>
               </div>
             </div>
@@ -76,8 +78,8 @@ export default function HeroSection() {
           <div className={styles.glassCard}>
             <div className={styles.glassCardIcon}>✦</div>
             <div>
-              <p className={styles.glassCardTitle}>5-Star Rated</p>
-              <p className={styles.glassCardSub}>Premium Showroom</p>
+              <p className={styles.glassCardTitle}>{t('hero.fiveStar')}</p>
+              <p className={styles.glassCardSub}>{t('hero.premiumShowroom')}</p>
             </div>
           </div>
         </div>
@@ -86,7 +88,7 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <div className={styles.scrollIndicator} aria-hidden="true">
         <div className={styles.scrollLine}></div>
-        <span className={styles.scrollText}>Scroll to explore</span>
+        <span className={styles.scrollText}>{t('hero.scrollText')}</span>
       </div>
     </section>
   );

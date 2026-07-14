@@ -1,15 +1,18 @@
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './StatsSection.module.css';
 
-const stats = [
-  { value: '25+', label: 'Years of Experience', desc: 'Trusted by homeowners & architects across the region.' },
-  { value: '100%', label: 'Genuine Products', desc: 'Every item is authenticated from the original manufacturer.' },
-  { value: '500+', label: 'Products Curated', desc: 'From the world\'s most sought-after brands.' },
-  { value: '10K+', label: 'Happy Clients', desc: 'Spaces transformed through quality and dedication.' },
-];
-
 export default function StatsSection() {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: '25+', label: t('stats.experience.label'), desc: t('stats.experience.desc') },
+    { value: '100%', label: t('stats.genuine.label'), desc: t('stats.genuine.desc') },
+    { value: '500+', label: t('stats.products.label'), desc: t('stats.products.desc') },
+    { value: '10K+', label: t('stats.clients.label'), desc: t('stats.clients.desc') },
+  ];
+
   return (
-    <section className={`section ${styles.stats}`} aria-label="Our achievements">
+    <section className={`section ${styles.stats}`} aria-label={t('hero.yearsTrust')}>
       <div className="container">
         <div className={styles.grid}>
           {stats.map((stat, i) => (
