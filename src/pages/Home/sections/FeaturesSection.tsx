@@ -1,42 +1,43 @@
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './FeaturesSection.module.css';
 
-const features = [
-  {
-    icon: '◆',
-    title: 'Premium Brands',
-    description: 'Access to the world\'s most sought-after architectural fixtures and finishes, curated for discerning tastes.',
-  },
-  {
-    icon: '✓',
-    title: 'Genuine Products',
-    description: 'Guaranteed authenticity across all our luxury tile and sanitary ware lines. Every product is certified.',
-  },
-  {
-    icon: '◎',
-    title: 'Competitive Pricing',
-    description: 'Exceptional value without compromising on the high-end showroom experience.',
-  },
-  {
-    icon: '✦',
-    title: 'Expert Consultation',
-    description: 'Professional guidance tailored for interior designers and architects. Your vision, expertly realised.',
-  },
-];
-
 export default function FeaturesSection() {
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      icon: '◆',
+      title: t('features.brands.title'),
+      description: t('features.brands.desc'),
+    },
+    {
+      icon: '✓',
+      title: t('features.genuine.title'),
+      description: t('features.genuine.desc'),
+    },
+    {
+      icon: '◎',
+      title: t('features.pricing.title'),
+      description: t('features.pricing.desc'),
+    },
+    {
+      icon: '✦',
+      title: t('features.consultation.title'),
+      description: t('features.consultation.desc'),
+    },
+  ];
+
   return (
     <section className={`section ${styles.features}`} aria-labelledby="features-heading">
       <div className="container">
         {/* Header */}
         <div className={`reveal ${styles.header}`}>
-          <span className="section-label">Why Choose Us</span>
+          <span className="section-label">{t('features.eyebrow')}</span>
           <h2 id="features-heading" className={`text-headline-lg ${styles.heading}`}>
-            Elevating spaces through uncompromising quality
+            {t('features.heading')}
           </h2>
           <p className={`text-body-lg ${styles.subtext}`}>
-            For decades, Maa Bhawani Agencies has been the premier destination for
-            high-end homeowners and elite architects. We curate only the finest materials,
-            bridging the gap between clinical precision and lifestyle elegance.
+            {t('features.subtext')}
           </p>
         </div>
 
