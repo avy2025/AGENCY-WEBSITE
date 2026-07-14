@@ -1,27 +1,29 @@
 import Button from '../../../components/Button/Button';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './CtaBanner.module.css';
 
 export default function CtaBanner() {
+  const { t } = useLanguage();
+
   return (
     <section className={styles.cta} aria-labelledby="cta-heading">
       <div className={`container ${styles.inner}`}>
         <div className={`reveal ${styles.content}`}>
           <span className="section-label" style={{ color: 'rgba(150,206,235,0.9)' }}>
-            Experience the Difference
+            {t('cta.eyebrow')}
           </span>
           <h2 id="cta-heading" className={`text-headline-lg ${styles.heading}`}>
-            Visit Our Luxury Showroom
+            {t('cta.heading')}
           </h2>
           <p className={`text-body-lg ${styles.subtext}`}>
-            Step into a curated world of premium tiles, fittings, and architectural luxury.
-            Our expert team is ready to bring your vision to life.
+            {t('cta.subtext')}
           </p>
           <div className={styles.actions}>
             <Button as="link" to="/showroom" variant="glass" size="lg">
-              Book a Consultation
+              {t('cta.btnConsultation')}
             </Button>
             <Button as="link" to="/gallery" variant="secondary" size="lg">
-              Browse Gallery
+              {t('cta.btnGallery')}
             </Button>
           </div>
         </div>
