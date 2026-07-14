@@ -1,17 +1,19 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Navbar.module.css';
-
-const navLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'Collections', to: '/collections' },
-  { label: 'Gallery', to: '/gallery' },
-  { label: 'Contact', to: '/showroom' },
-];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { label: t('nav.home'), to: '/' },
+    { label: t('nav.collections'), to: '/collections' },
+    { label: t('nav.gallery'), to: '/gallery' },
+    { label: t('nav.contact'), to: '/showroom' },
+  ];
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20);
@@ -33,9 +35,9 @@ export default function Navbar() {
       <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`} role="banner">
         <div className={`container ${styles.inner}`}>
           {/* Logo */}
-          <Link to="/" className={styles.logo} aria-label="Maa Bhawani - Home">
+          <Link to="/" className={styles.logo} aria-label={`Maa Bhawani - ${t('nav.home')}`}>
             <span className={styles.logoMark}>✦</span>
-            <span className={styles.logoText}>MAA BHAWANI</span>
+            <span className={styles.logoText}>{t('brand.name')}</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -54,11 +56,32 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA + Hamburger */}
+          {/* Actions: Lang Switch + CTA + Hamburger */}
           <div className={styles.actions}>
+            {/* Desktop Language Switcher */}
+            <div className={styles.langSwitch} role="group" aria-label={t('nav.toggleLang')}>
+              <button
+                type="button"
+                className={`${styles.langBtn} ${language === 'hi' ? styles.langBtnActive : ''}`}
+                onClick={() => setLanguage('hi')}
+                aria-label="हिन्दी"
+              >
+                हि
+              </button>
+              <button
+                type="button"
+                className={`${styles.langBtn} ${language === 'en' ? styles.langBtnActive : ''}`}
+                onClick={() => setLanguage('en')}
+                aria-label="English"
+              >
+                EN
+              </button>
+            </div>
+
             <Link to="/showroom" className={styles.ctaBtn}>
-              Enquire Now
+              {t('nav.enquire')}
             </Link>
+            
             <button
               className={styles.hamburger}
               onClick={() => setIsMenuOpen((o) => !o)}
@@ -105,8 +128,30 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(false)}
             style={{ transitionDelay: `${navLinks.length * 0.07}s` }}
           >
-            Enquire Now
+            {t('nav.enquire')}
           </Link>
+
+          {/* Mobile Language Switcher */}
+          <div
+            className={styles.mobileLangSwitch}
+            style={{ transitionDelay: `${(navLinks.length + 1) * 0.07}s` }}
+          >
+            <button
+              type="button"
+              className={`${styles.mobileLangBtn} ${language === 'hi' ? styles.mobileLangBtnActive : ''}`}
+              onClick={() => setLanguage('hi')}
+            >
+              हिन्दी (HI)
+            </button>
+            <div className={styles.mobileLangDivider} />
+            <button
+              type="button"
+              className={`${styles.mobileLangBtn} ${language === 'en' ? styles.mobileLangBtnActive : ''}`}
+              onClick={() => setLanguage('en')}
+            >
+              English (EN)
+            </button>
+          </div>
         </div>
       </nav>
     </>
