@@ -64,10 +64,15 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Legal Column */}
+        {/* Newsletter / Legal Column */}
         <div className={styles.linksCol}>
-          <h3 className={styles.colHeading}>{t('brand.columns.legal')}</h3>
-          <ul className={styles.linkList}>
+          <h3 className={styles.colHeading}>Newsletter</h3>
+          <p className={styles.newsletterText}>Subscribe to get the latest updates and exclusive offers.</p>
+          <form className={styles.newsletterForm} onSubmit={(e) => e.preventDefault()}>
+            <input type="email" placeholder="Email address" className={styles.newsletterInput} required />
+            <button type="submit" className={styles.newsletterBtn}>→</button>
+          </form>
+          <ul className={styles.linkList} style={{ marginTop: '20px' }}>
             {legalLinks.map((link) => (
               <li key={link.label}>
                 <Link to={link.to} className={styles.footerLink}>
