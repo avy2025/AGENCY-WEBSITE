@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Layout from '../../components/Layout/Layout';
+import Seo from '../../components/Seo/Seo';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Gallery.module.css';
 
@@ -26,8 +27,24 @@ export default function Gallery() {
   const { t } = useLanguage();
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
 
+  const closeLightbox = useCallback(() => setLightboxItem(null), []);
+
+  useEffect(() => {
+    if (!lightboxItem) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+    };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [lightboxItem, closeLightbox]);
+
   return (
     <Layout>
+      <Seo title="Gallery" description="Browse our luxury showroom gallery featuring premium fixtures, ceramics, and installations." path="/gallery" />
       {/* Page Header */}
       <section className={styles.pageHeader}>
         <div className="container">
@@ -80,7 +97,7 @@ export default function Gallery() {
           role="dialog"
           aria-modal="true"
           aria-label={`${t('gallery.view')}: ${t(`gallery.items.${lightboxItem.itemKey}.title`)}`}
-          onClick={() => setLightboxItem(null)}
+          onClick={closeLightbox}
         >
           <div
             className={styles.lightboxContent}
@@ -89,7 +106,7 @@ export default function Gallery() {
           >
             <button
               className={styles.lightboxClose}
-              onClick={() => setLightboxItem(null)}
+              onClick={closeLightbox}
               aria-label={t('gallery.ariaClose')}
             >
               {t('gallery.close')}
