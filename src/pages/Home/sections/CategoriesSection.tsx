@@ -65,9 +65,8 @@ export default function CategoriesSection() {
               to="/collections"
               className={`reveal reveal-delay-${(i % 4) + 1} ${styles.card} ${cat.span === 'wide' ? styles.wide : ''}`}
               aria-label={`Browse ${cat.title}`}
-              style={{ '--card-bg': cat.bg } as React.CSSProperties}
             >
-              <div className={styles.cardBg} />
+              <div className={styles.cardBg} style={{ backgroundImage: cat.bg }} />
               <div className={styles.cardContent}>
                 <span className={styles.tag}>{cat.tag}</span>
                 <div className={styles.cardBottom}>

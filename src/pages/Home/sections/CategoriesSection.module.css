@@ -29,7 +29,7 @@
   display: block;
   text-decoration: none;
   cursor: pointer;
-  background: var(--card-bg, var(--color-secondary-container));
+  background: var(--color-secondary-container);
   box-shadow: var(--shadow-ambient);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -46,7 +46,6 @@
 .cardBg {
   position: absolute;
   inset: 0;
-  background: inherit;
   background-size: cover;
   background-position: center;
   transition: transform 0.6s ease;
