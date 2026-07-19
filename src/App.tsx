@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
 import { Loader2 } from 'lucide-react';
 
@@ -33,6 +34,7 @@ function LoadingScreen() {
 
 function App() {
   return (
+    <HelmetProvider>
     <LanguageProvider>
       <BrowserRouter>
         <Suspense fallback={<LoadingScreen />}>
@@ -45,6 +47,7 @@ function App() {
         </Suspense>
       </BrowserRouter>
     </LanguageProvider>
+    </HelmetProvider>
   );
 }
 

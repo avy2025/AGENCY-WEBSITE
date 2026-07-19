@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Layout from '../../components/Layout/Layout';
+import Seo from '../../components/Seo/Seo';
 import Button from '../../components/Button/Button';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Collections.module.css';
@@ -57,6 +58,7 @@ export default function Collections() {
 
   return (
     <Layout>
+      <Seo title="Collections" description="Browse our curated range of premium kitchen sinks, tiles, designer taps, and wash basins." path="/collections" />
       {/* Page Header */}
       <section className={styles.pageHeader}>
         <div className={`container ${styles.pageHeaderInner}`}>

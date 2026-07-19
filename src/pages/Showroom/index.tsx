@@ -1,5 +1,6 @@
 import { type FormEvent, useState } from 'react';
 import Layout from '../../components/Layout/Layout';
+import Seo from '../../components/Seo/Seo';
 import Button from '../../components/Button/Button';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Showroom.module.css';
@@ -79,6 +80,7 @@ export default function Showroom() {
 
   return (
     <Layout>
+      <Seo title="Contact" description="Visit our luxury showroom in Ranchi or book a consultation for premium tiles, sanitary ware, and bathroom solutions." path="/showroom" />
       {/* Page Header */}
       <section className={styles.pageHeader}>
         <div className="container">
